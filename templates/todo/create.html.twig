@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}create Todo{% endblock %}
+
+{% form_theme formulaire 'bootstrap_5_layout.html.twig' %}
+{% block body %}
+
+    <h1>{{ baseline }}</h1>
+
+    {{ form_start(formulaire) }}
+
+
+    {{ form_widget(formulaire.description) }}
+    {{ form_errors(formulaire.description) }}
+    {{ form_widget(formulaire.category) }}
+
+    <button type="submit" class="btn btn-success">GO</button>
+
+    {{ form_end(formulaire) }}
+{% endblock %}

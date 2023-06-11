@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index des todo{% endblock %}
+
+{% block body %}
+
+    {% for todo in todos %}
+
+        <hr>
+        <p>ID = {{ todo.id }}</p>
+        <p><strong>{{ todo.description }}</strong></p>
+        <p><i>{{ todo.category.name }}</i></p>
+
+
+        {% if todo.finished == 0 %}
+            <a href="{{ path('todo_done', {id: todo.id}) }}" class="btn btn-secondary">A faire</a>
+        {% endif %}
+        {% if todo.finished == 1 %}
+            <a href="{{ path('todo_undone', {id: todo.id}) }}" class="btn btn-success">Fait</a>
+        {% endif %}
+        <a href="{{ path('todo_show',{id:todo.id}) }}" class="btn btn-primary">Montrer</a>
+        <a href="{{ path('todo_delete',{id:todo.id}) }}" class="btn btn-danger">Supprimer</a>
+        <a href="{{ path('todo_edit',{id:todo.id}) }}" class="btn btn-warning">Éditer</a>
+
+        <hr>
+
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TodoController!{% endblock %}
+
+{% block body %}
+
+    <a href="{{ path('app_todo') }}"><button class="btn btn-primary">retour</button></a>
+
+    <h1>voici UN TRUC à faire</h1>
+
+
+    <hr>
+    <p>ID = {{ todo.id }}</p>
+    <p><strong>{{ todo.description }}</strong></p>
+
+
+    {% if todo.finished == 0 %}
+        <a href="{{ path('todo_done', {id: todo.id}) }}" class="btn btn-danger">A faire</a>
+    {% endif %}
+    {% if todo.finished == 1 %}
+        <a href="{{ path('todo_undone', {id: todo.id}) }}" class="btn btn-success">Fait</a>
+    {% endif %}
+    <a href="{{ path('todo_delete', {id:todo.id}) }}" class="btn btn-danger">Delete</a>
+    <hr>
+
+{% endblock %}
